@@ -2,7 +2,7 @@
 import logging
 import random
 import time
-from .producer import Producer
+from producer import Producer
 
 class Meter:
     """Meter class connect to a broker queue and send random

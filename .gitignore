@@ -2,4 +2,6 @@ meter/src/__pycache__/*
 meter/test/__pycache__/*
 *.log
 *.json
-
+pvsimulator/src/__pycache__/*
+log
+pvsimulator/test/__pycache__/*

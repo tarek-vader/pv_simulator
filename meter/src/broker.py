@@ -1,6 +1,7 @@
 
 import logging
 import pika
+import time
 from producer import Producer
 
 class RabitMQProducer(Producer):
@@ -10,6 +11,7 @@ class RabitMQProducer(Producer):
         self._logger = logging.getLogger(f"{__name__}.{self.__class__.__name__}")
         self._queue_name = queue_name
         self._credentials = pika.PlainCredentials(username, password)
+        time.sleep(10)
         try:
             self._connection = pika.BlockingConnection(
                 pika.ConnectionParameters(
@@ -38,7 +40,7 @@ class RabitMQProducer(Producer):
                 body=f"{value:.2f}",
                 mandatory=True,
                 properties=pika.BasicProperties(
-                    delivery_mode = pika.DeliveryMode.Transient,
+                    delivery_mode = pika.DeliveryMode.Persistent,
                 )
             )
             self._logger.info(f"Value sent to broker: {value:.2f}")

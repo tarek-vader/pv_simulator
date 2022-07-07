@@ -7,6 +7,8 @@ services:
     build:
       context: ./rabbitmq
       dockerfile: DockerFile
+    volumes:
+      - ./meter/log/:/app/log/
     hostname: local
     ports:
       - ${RABBITMQ_PORT}:5672
@@ -18,3 +20,14 @@ services:
       dockerfile: Dockerfile
     depends_on:
       - "rabbitmq"
+  pv_simulator:
+    env_file: .env
+    build:
+      context: ./pvsimulator
+      dockerfile: Dockerfile
+    volumes:
+      - ./pvsimulator/log/:/app/log/
+    depends_on:
+      - "rabbitmq"
+      - "meter"
+      

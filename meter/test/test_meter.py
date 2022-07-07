@@ -1,4 +1,6 @@
-from src.meter import Meter
+import sys
+sys.path.append("..\src")
+from src import Meter
 
 
 def test_meter_generate(mocker):
