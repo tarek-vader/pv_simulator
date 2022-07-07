@@ -1,0 +1,5 @@
+meter/src/__pycache__/*
+meter/test/__pycache__/*
+*.log
+*.json
+
